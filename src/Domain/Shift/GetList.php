@@ -3,7 +3,6 @@ namespace Spark\Project\Domain\Shift;
 
 use Aura\Payload\Payload;
 use Spark\Adr\DomainInterface;
-use Spark\Adr\InputInterface;
 
 class GetList implements DomainInterface
 {
@@ -41,14 +40,14 @@ class GetList implements DomainInterface
         ]
     ];
 
-    public function __invoke(InputInterface $input)
+    public function __invoke(array $input)
     {
         $payload = new Payload();
         $payload->setStatus(Payload::FOUND);
 
         $output = [];
 
-        if ($user_id = $input['user_id']) {
+        if (!empty($input['user_id']) && ($user_id = $input['user_id'])) {
             $shifts = array_values(array_filter($this->shifts, function($shift) use ($user_id) {
                 return $shift['user_id'] == $user_id;
             }));
