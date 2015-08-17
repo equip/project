@@ -12,7 +12,7 @@ $app->setMiddleware([
 ]);
 
 $app->addRoutes(function(Spark\Router $r) {
-    $r->get('/shifts', 'Spark\Project\Domain\Shift\GetList');
+    $r->get('/hello[/{name}]', 'Spark\Project\Domain\Hello');
 });
 
 $app->run();
