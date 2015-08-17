@@ -4,7 +4,7 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "sparkphp/spark": "dev-master"
+        "sparkphp/spark": "~0.4"
     },
     "autoload": {
         "psr-4": {
@@ -16,6 +16,5 @@
             "name": "Daniel Olfelt",
             "email": "dolfelt@gmail.com"
         }
-    ],
-    "minimum-stability": "dev"
+    ]
 }
