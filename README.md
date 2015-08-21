@@ -24,16 +24,16 @@ cd spark-project
 php -S localhost:8000 -t web/
 ```
 
-You can then browse to <http://localhost:8000/shifts> and see JSON output:
+You can then browse to <http://localhost:8000/hello> and see JSON output:
 
 ```json
-{"shifts": []}
+{"hello": "world"}
 ```
 
-You can also browse to <http://localhost:8000/shifts?user_id=1> and see modified JSON output:
+You can also browse to <http://localhost:8000/hello/nancy> and see modified JSON output:
 
 ```json
-{"meta": {}, "shifts": []}
+{"hello":"nancy"}
 ```
 
 ## Documentation
