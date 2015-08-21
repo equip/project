@@ -16,8 +16,8 @@ class Hello implements DomainInterface
         }
 
         return (new Payload)
-            ->setStatus(Payload::OK)
-            ->setOutput([
+            ->withStatus(Payload::OK)
+            ->withOutput([
                 'hello' => $name,
             ]);
     }
