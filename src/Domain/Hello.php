@@ -3,10 +3,26 @@
 namespace Spark\Project\Domain;
 
 use Spark\Adr\DomainInterface;
-use Spark\Payload;
+use Spark\Adr\PayloadInterface;
 
 class Hello implements DomainInterface
 {
+    /**
+     * @var PayloadInterface
+     */
+    private $payload;
+
+    /**
+     * @param PayloadInterface $payload
+     */
+    public function __construct(PayloadInterface $payload)
+    {
+        $this->payload = $payload;
+    }
+
+    /**
+     * @inheritDoc
+     */
     public function __invoke(array $input)
     {
         $name = 'world';
@@ -15,8 +31,8 @@ class Hello implements DomainInterface
             $name = $input['name'];
         }
 
-        return (new Payload)
-            ->withStatus(Payload::OK)
+        return $this->payload
+            ->withStatus(PayloadInterface::OK)
             ->withOutput([
                 'hello' => $name,
             ]);

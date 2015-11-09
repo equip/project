@@ -1,20 +1,31 @@
 <?php
 
+// Include Composer autoloader
 require __DIR__ . '/../vendor/autoload.php';
 
-$app = Spark\Application::boot();
+// Configure the dependency injection container
+$injector = new \Auryn\Injector;
+$configuration = new \Spark\Configuration\DefaultConfigurationSet;
+$configuration->apply($injector);
 
-$app->setMiddleware([
-    'Relay\Middleware\ResponseSender',
-    'Spark\Handler\ExceptionHandler',
-    'Spark\Handler\RouteHandler',
-    'Spark\Handler\ContentHandler',
-    'Spark\Handler\ActionHandler',
-]);
+// Configure middleware
+$injector->alias(
+    '\\Spark\\Middleware\\Collection',
+    '\\Spark\\Middleware\\DefaultCollection'
+);
 
-$app->addRoutes(function (Spark\Router $r) {
-    $r->get('/hello[/{name}]', 'Spark\Project\Domain\Hello');
-    $r->post('/hello[/{name}]', 'Spark\Project\Domain\Hello');
-});
+// Configure the router
+$injector->prepare(
+    '\\Spark\\Router',
+    function(\Spark\Router $router) {
+        $router->get('/hello[/{name}]', 'Spark\Project\Domain\Hello');
+        $router->post('/hello[/{name}]', 'Spark\Project\Domain\Hello');
+    }
+);
 
-$app->run();
+// Bootstrap the application
+$dispatcher = $injector->make('\\Relay\\Relay');
+$dispatcher(
+    $injector->make('Psr\\Http\\Message\\ServerRequestInterface'),
+    $injector->make('Psr\\Http\\Message\\ResponseInterface')
+);

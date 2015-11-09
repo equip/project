@@ -5,6 +5,8 @@ Spark is a PSR-7 compliant [Action-Domain-Responder](https://github.com/pmjones/
 wrapper around the real logic of your application domain. It's also [PSR-1](http://www.php-fig.org/psr/psr-1/),
 [PSR-2](http://www.php-fig.org/psr/psr-2/), and [PSR-4](http://www.php-fig.org/psr/psr-4/) compliant.
 
+Check out the source project [here](http://github.com/sparkphp/Spark).
+
 ## Installing Spark
 
 You will need [Composer](https://getcomposer.org) to install Spark.
@@ -35,7 +37,3 @@ You can also browse to <http://localhost:8000/hello/nancy> and see modified JSON
 ```json
 {"hello":"nancy"}
 ```
-
-## Documentation
-
-Not much to read yet. Check out the source project [here](http://github.com/sparkphp/Spark).
