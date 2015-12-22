@@ -3,29 +3,28 @@
 // Include Composer autoloader
 require __DIR__ . '/../vendor/autoload.php';
 
-// Configure the dependency injection container
-$injector = new Auryn\Injector;
-$configuration = new Spark\Configuration\DefaultConfigurationSet;
-$configuration->apply($injector);
+use Spark\Project\Domain;
 
-// Configure middleware
-$injector->alias(
-    'Spark\Middleware\Collection',
-    'Spark\Middleware\DefaultCollection'
-);
-
-// Configure the router
-$injector->prepare(
-    'Spark\Router',
-    function (Spark\Router $router) {
-        $router->get('/hello[/{name}]', 'Spark\Project\Domain\Hello');
-        $router->post('/hello[/{name}]', 'Spark\Project\Domain\Hello');
-    }
-);
-
-// Bootstrap the application
-$dispatcher = $injector->make('Relay\Relay');
-$dispatcher(
-    $injector->make('Psr\Http\Message\ServerRequestInterface'),
-    $injector->make('Psr\Http\Message\ResponseInterface')
-);
+Spark\Application::build()
+->setConfiguration([
+    Spark\Configuration\AurynConfiguration::class,
+    Spark\Configuration\DiactorosConfiguration::class,
+    Spark\Configuration\NegotiationConfiguration::class,
+    Spark\Configuration\PayloadConfiguration::class,
+    Spark\Configuration\RelayConfiguration::class,
+])
+->setMiddleware([
+    Relay\Middleware\ResponseSender::class,
+    Spark\Handler\ExceptionHandler::class,
+    Spark\Handler\DispatchHandler::class,
+    Spark\Handler\JsonContentHandler::class,
+    Spark\Handler\FormContentHandler::class,
+    Spark\Handler\ActionHandler::class,
+])
+->setRouting(function (Spark\Directory $directory) {
+    return $directory
+    ->get('/hello[/{name}]', Domain\Hello::class)
+    ->post('/hello[/{name}]', Domain\Hello::class)
+    ; // End of routing
+})
+->run();
