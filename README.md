@@ -18,12 +18,12 @@ one called `spark-project`:
 composer create-project -s dev sparkphp/project spark-project
 ```
 
-Confirm the installation by changing into the project directory and starting the
-built-in PHP web server:
+Confirm the installation by changing into the project directory and starting a
+development web server:
 
 ```bash
 cd spark-project
-php -S localhost:8000 -t web/
+bin/start-server
 ```
 
 You can then browse to <http://localhost:8000/hello> and see JSON output:
