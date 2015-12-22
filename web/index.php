@@ -10,13 +10,13 @@ $configuration->apply($injector);
 
 // Configure middleware
 $injector->alias(
-    '\\Spark\\Middleware\\Collection',
-    '\\Spark\\Middleware\\DefaultCollection'
+    '\Spark\Middleware\Collection',
+    '\Spark\Middleware\DefaultCollection'
 );
 
 // Configure the router
 $injector->prepare(
-    '\\Spark\\Router',
+    '\Spark\Router',
     function(\Spark\Router $router) {
         $router->get('/hello[/{name}]', 'Spark\Project\Domain\Hello');
         $router->post('/hello[/{name}]', 'Spark\Project\Domain\Hello');
@@ -24,8 +24,8 @@ $injector->prepare(
 );
 
 // Bootstrap the application
-$dispatcher = $injector->make('\\Relay\\Relay');
+$dispatcher = $injector->make('\Relay\Relay');
 $dispatcher(
-    $injector->make('Psr\\Http\\Message\\ServerRequestInterface'),
-    $injector->make('Psr\\Http\\Message\\ResponseInterface')
+    $injector->make('Psr\Http\Message\ServerRequestInterface'),
+    $injector->make('Psr\Http\Message\ResponseInterface')
 );
