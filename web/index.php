@@ -12,6 +12,7 @@ Spark\Application::build()
     Spark\Configuration\NegotiationConfiguration::class,
     Spark\Configuration\PayloadConfiguration::class,
     Spark\Configuration\RelayConfiguration::class,
+    Spark\Configuration\WhoopsConfiguration::class,
 ])
 ->setMiddleware([
     Relay\Middleware\ResponseSender::class,
