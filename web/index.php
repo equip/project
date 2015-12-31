@@ -9,7 +9,6 @@ Spark\Application::build()
 ->setConfiguration([
     Spark\Configuration\AurynConfiguration::class,
     Spark\Configuration\DiactorosConfiguration::class,
-    Spark\Configuration\NegotiationConfiguration::class,
     Spark\Configuration\PayloadConfiguration::class,
     Spark\Configuration\RelayConfiguration::class,
     Spark\Configuration\WhoopsConfiguration::class,
