@@ -1,14 +1,14 @@
 {
-    "name": "sparkphp/project",
-    "description": "A sample project for building an application using Spark.",
+    "name": "equip/project",
+    "description": "A sample project for building an application using Equip.",
     "type": "project",
     "license": "MIT",
     "require": {
-        "sparkphp/spark": "~0.16.0"
+        "equip/equip": "^1.0"
     },
     "autoload": {
         "psr-4": {
-            "Spark\\Project\\": "src/"
+            "Equip\\Project\\": "src/"
         }
     },
     "authors": [

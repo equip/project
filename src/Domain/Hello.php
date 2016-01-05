@@ -1,9 +1,9 @@
 <?php
 
-namespace Spark\Project\Domain;
+namespace Equip\Project\Domain;
 
-use Spark\Adr\DomainInterface;
-use Spark\Adr\PayloadInterface;
+use Equip\Adr\DomainInterface;
+use Equip\Adr\PayloadInterface;
 
 class Hello implements DomainInterface
 {
