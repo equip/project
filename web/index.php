@@ -12,13 +12,15 @@ Equip\Application::build()
     Equip\Configuration\PayloadConfiguration::class,
     Equip\Configuration\RelayConfiguration::class,
     Equip\Configuration\WhoopsConfiguration::class,
+    Equip\Configuration\EnvConfiguration::class,
+    Equip\Configuration\MonologConfiguration::class,
 ])
 ->setMiddleware([
     Relay\Middleware\ResponseSender::class,
     Equip\Handler\ExceptionHandler::class,
     Equip\Handler\DispatchHandler::class,
-    Equip\Handler\JsonContentHandler::class,
-    Equip\Handler\FormContentHandler::class,
+    Relay\Middleware\JsonContentHandler::class,
+    Relay\Middleware\FormContentHandler::class,
     Equip\Handler\ActionHandler::class,
 ])
 ->setRouting(function (Equip\Directory $directory) {
