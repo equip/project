@@ -3,25 +3,25 @@
 // Include Composer autoloader
 require __DIR__ . '/../vendor/autoload.php';
 
-use Spark\Project\Domain;
+use Equip\Project\Domain;
 
-Spark\Application::build()
+Equip\Application::build()
 ->setConfiguration([
-    Spark\Configuration\AurynConfiguration::class,
-    Spark\Configuration\DiactorosConfiguration::class,
-    Spark\Configuration\PayloadConfiguration::class,
-    Spark\Configuration\RelayConfiguration::class,
-    Spark\Configuration\WhoopsConfiguration::class,
+    Equip\Configuration\AurynConfiguration::class,
+    Equip\Configuration\DiactorosConfiguration::class,
+    Equip\Configuration\PayloadConfiguration::class,
+    Equip\Configuration\RelayConfiguration::class,
+    Equip\Configuration\WhoopsConfiguration::class,
 ])
 ->setMiddleware([
     Relay\Middleware\ResponseSender::class,
-    Spark\Handler\ExceptionHandler::class,
-    Spark\Handler\DispatchHandler::class,
-    Spark\Handler\JsonContentHandler::class,
-    Spark\Handler\FormContentHandler::class,
-    Spark\Handler\ActionHandler::class,
+    Equip\Handler\ExceptionHandler::class,
+    Equip\Handler\DispatchHandler::class,
+    Equip\Handler\JsonContentHandler::class,
+    Equip\Handler\FormContentHandler::class,
+    Equip\Handler\ActionHandler::class,
 ])
-->setRouting(function (Spark\Directory $directory) {
+->setRouting(function (Equip\Directory $directory) {
     return $directory
     ->get('/hello[/{name}]', Domain\Hello::class)
     ->post('/hello[/{name}]', Domain\Hello::class)
