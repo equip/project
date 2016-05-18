@@ -6,7 +6,8 @@
     "require": {
         "equip/framework": "^1.0",
         "josegonzalez/dotenv": "^2.0",
-        "monolog/monolog": "^1.19"
+        "monolog/monolog": "^1.19",
+        "zendframework/zend-diactoros": "^1.0.4"
     },
     "autoload": {
         "psr-4": {
