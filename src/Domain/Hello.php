@@ -32,7 +32,7 @@ class Hello implements DomainInterface
         }
 
         return $this->payload
-            ->withStatus(PayloadInterface::OK)
+            ->withStatus(PayloadInterface::STATUS_OK)
             ->withOutput([
                 'hello' => $name,
             ]);
