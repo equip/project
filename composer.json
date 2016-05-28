@@ -3,21 +3,21 @@
     "description": "A sample project for building an application using Equip.",
     "type": "project",
     "license": "MIT",
-    "require": {
-        "equip/framework": "^1.0",
-        "josegonzalez/dotenv": "^2.0",
-        "monolog/monolog": "^1.19",
-        "zendframework/zend-diactoros": "^1.0.4"
-    },
+    "authors": [
+        {
+            "name": "Equip Contributors",
+            "homepage": "https://github.com/equip"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Equip\\Project\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "Daniel Olfelt",
-            "email": "dolfelt@gmail.com"
-        }
-    ]
+    "require": {
+        "equip/framework": "^2.0",
+        "josegonzalez/dotenv": "^2.0",
+        "monolog/monolog": "^1.19",
+        "zendframework/zend-diactoros": "^1.0.4"
+    }
 }
