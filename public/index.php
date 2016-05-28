@@ -9,11 +9,14 @@ Equip\Application::build()
 ->setConfiguration([
     Equip\Configuration\AurynConfiguration::class,
     Equip\Configuration\DiactorosConfiguration::class,
-    Equip\Configuration\PayloadConfiguration::class,
-    Equip\Configuration\RelayConfiguration::class,
-    Equip\Configuration\WhoopsConfiguration::class,
     Equip\Configuration\EnvConfiguration::class,
     Equip\Configuration\MonologConfiguration::class,
+    Equip\Configuration\PayloadConfiguration::class,
+    // Equip\Configuration\PlatesConfiguration::class,
+    // Equip\Configuration\PlatesResponderConfiguration::class,
+    // Equip\Configuration\RedisConfiguration::class,
+    Equip\Configuration\RelayConfiguration::class,
+    Equip\Configuration\WhoopsConfiguration::class,
 ])
 ->setMiddleware([
     Relay\Middleware\ResponseSender::class,
