@@ -28,8 +28,9 @@ Equip\Application::build()
 ])
 ->setRouting(function (Equip\Directory $directory) {
     return $directory
-    ->get('/hello[/{name}]', Domain\Hello::class)
-    ->post('/hello[/{name}]', Domain\Hello::class)
-    ; // End of routing
+        ->get('/', Domain\Welcome::class)
+        ->get('/hello[/{name}]', Domain\Hello::class)
+        ->post('/hello[/{name}]', Domain\Hello::class)
+        ; // End of routing
 })
 ->run();
