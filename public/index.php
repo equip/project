@@ -22,8 +22,8 @@ Equip\Application::build()
     Relay\Middleware\ResponseSender::class,
     Equip\Handler\ExceptionHandler::class,
     Equip\Handler\DispatchHandler::class,
-    Relay\Middleware\JsonContentHandler::class,
-    Relay\Middleware\FormContentHandler::class,
+    Equip\Handler\JsonContentHandler::class,
+    Equip\Handler\FormContentHandler::class,
     Equip\Handler\ActionHandler::class,
 ])
 ->setRouting(function (Equip\Directory $directory) {
