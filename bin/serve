@@ -6,4 +6,4 @@ if [ -n "$1" ]; then
     PORT="$1"
 fi
 
-php -S localhost:$PORT -t web/ web/index.php
+php -S localhost:$PORT -t public/ public/index.php
