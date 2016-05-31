@@ -23,7 +23,7 @@ development web server:
 
 ```bash
 cd equip-project
-bin/start-server
+bin/serve
 ```
 
 You can then browse to <http://localhost:8000/hello> and see JSON output:
