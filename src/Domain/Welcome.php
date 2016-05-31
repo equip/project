@@ -5,7 +5,7 @@ namespace Equip\Project\Domain;
 use Equip\Adr\DomainInterface;
 use Equip\Adr\PayloadInterface;
 
-class Hello implements DomainInterface
+class Welcome implements DomainInterface
 {
     /**
      * @var PayloadInterface
@@ -25,16 +25,15 @@ class Hello implements DomainInterface
      */
     public function __invoke(array $input)
     {
-        $name = 'world';
-
-        if (!empty($input['name'])) {
-            $name = $input['name'];
-        }
+        $composer = __DIR__ . '/../../composer.json';
+        $composer = json_decode(file_get_contents($composer), true);
 
         return $this->payload
             ->withStatus(PayloadInterface::STATUS_OK)
             ->withOutput([
-                'hello' => $name,
+                'appName' => $composer['name'],
+                'equipVersion' => $composer['require']['equip/framework'],
+                'hello' => '/hello/:name',
             ]);
     }
 }
