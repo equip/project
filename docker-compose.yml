@@ -1,0 +1,41 @@
+version: '2.0'
+
+services:
+  www:
+    image: registry.wheniwork.com/containers/nginx
+    environment:
+      - NGINX_SERVER_NAME=whenitoggle.wheniwork.dev
+      - NGINX_PHP_HOST=php
+    volumes:
+      - .:/var/www/app
+    links:
+      - php
+    ports:
+      - "80:80"
+      - "443:443"
+
+  php:
+    image: registry.wheniwork.com/containers/php
+    environment:
+      - PHP_DATE_TIMEZONE=UTC
+      - PHP_XDEBUG_REMOTE_CONNECT_BACK=0
+      - TERM=xterm
+    expose:
+      - "9000"
+    volumes:
+      - .:/var/www/app
+      - ~/.ssh:/root/.ssh
+      - ~/.composer:/root/.composer
+      - ~/.npm:/root/.npm
+      - ~/.ssh:/home/gitlab-runner/.ssh
+      - ~/.composer:/home/gitlab-runner/.composer
+      - ~/.npm:/home/gitlab-runner/.npm
+    links:
+      - redis
+    user: root
+    command: /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+
+  redis:
+    image: redis:3
+    expose:
+      - "6379"
